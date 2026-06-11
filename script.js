@@ -9,7 +9,7 @@ startBtn.addEventListener("click", async () => {
         const stream = await navigator.mediaDevices.getUserMedia({
             video: {
                 facingMode: {
-                    ideal: "environment"
+                    exact: "environment"
                 }
             },
             audio: false
@@ -17,7 +17,9 @@ startBtn.addEventListener("click", async () => {
 
         video.srcObject = stream;
     } catch (err) {
-        alert("Could not access camera: " + err.message);
+        alert(
+            "Back camera could not be accessed. Your browser may not support selecting it."
+        );
     }
 });
 
