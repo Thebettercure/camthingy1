@@ -7,7 +7,11 @@ let inverted = true;
 startBtn.addEventListener("click", async () => {
     try {
         const stream = await navigator.mediaDevices.getUserMedia({
-            video: true,
+            video: {
+                facingMode: {
+                    ideal: "environment"
+                }
+            },
             audio: false
         });
 
@@ -19,6 +23,7 @@ startBtn.addEventListener("click", async () => {
 
 toggleBtn.addEventListener("click", () => {
     inverted = !inverted;
+
     video.style.filter = inverted
         ? "invert(100%)"
         : "invert(0%)";
